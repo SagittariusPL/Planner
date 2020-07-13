@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pl">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+    <title>Planner</title>
+    <meta name="description" content="Your site to plan your work"/>
+    <meta name="keywords" content="Planner, plan, schedule, date, time"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="container">
+
+    <div id="logout">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Log Out"/>
+        </form>
+    </div>
+
+    <div id="logo">
+        Planner
+    </div>
+
+    <div id="topbar">
+
+        <div id="topbarL">
+            <img height="140" width="140" th:src="@{images/meting.jpg}"
+                 src="..static/images/meting.jpg"/>
+        </div>
+
+
+        <div id="topbarR">
+            <span class="bigtitle">Description</span>
+            <div style="height: 15px;"></div>
+            Planner is application which should help you planning your own meetings.<br/>
+            Possible actions are show on left sidebar. Enjoy :)
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div id="sidebar">
+        <a href="/add" class="tilelink">
+            <div class="optionL">Add meeting</div>
+        </a>
+        <a href="/meetingsAtDay" class="tilelink">
+            <div class="optionL">Schedule</div>
+        </a>
+
+        <a href="/aboutApi" class="tilelink">
+            <div class="optionL">About API</div>
+        </a>
+
+    </div>
+
+    <div id="content">
+        <form action="#" th:action="@{/meetingsAtDay}" th:object="${localDateDTO}" method="post">
+
+            <div class="add">
+                <label class="control-label">Choose a day </label>
+                <br/>
+                <input title="Choose a day" type="date" id="localDate" name="localDate"
+                       th:field="*{localDate}"/></input>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-success"/>
+            Search
+            </button>
+            <br/>
+            <div class="status">
+                <td th:text="${exception}"></td>
+            </div>
+            <div class="status">
+                <td th:text="${correct}"></td>
+            </div>
+        </form>
+
+        <div class="error" th:each="exception, iterstat: ${exceptions}">
+
+            <td th:text="${exception}" th:id="|td${iterstat.index}|"></td>
+            </br>
+        </div>
+        <div class="center-bar">
+            <div style="width: 150px;" class="header">
+                Title
+            </div>
+            <div style="width: 218px;" class="header">
+                Time
+            </div>
+            <div style="width: 70px;" class="header">
+                IsActual
+            </div>
+            <div style="width: 70px;" class="header">
+                Room
+            </div>
+
+            <div style="width: 110px;" class="header">
+                Cancel/Delete
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+
+
+        <div class="meeting" th:each="meeting : ${meetings}">
+            <br class="getMeeting">
+
+            <div style="width: 150px;" class="meeting-data">
+                <td th:text="${meeting.title}"></td>
+            </div>
+
+            <div style="width: 218px;" class="meeting-data">
+                <td th:text="${meeting.meetingStartDate}"></td>
+                -
+                <td th:text="${meeting.meetingEndDate}"></td>
+            </div>
+
+            <div style="width: 70px;" class="meeting-data">
+                <td th:text="${meeting.isActual}"></td>
+            </div>
+
+            <div style="width: 70px;" class="meeting-data">
+                <td th:text="${meeting.room}"></td>
+            </div>
+            <div style="width: 110px;" class="meeting-data">
+                 <span class="cancel">
+                    <form action="#" th:action="@{/meeting-cancel}" th:object="${id}" method="post">
+                        <input type="hidden" name="id" th:value="${meeting.id}"/>
+                        <button type="submit" class="btn btn-success"/>Cancel</button>
+                    </form>
+                </span>
+
+                <span class="cancel">
+                    <form action="#" th:action="@{/meeting-delete}" th:object="${id}" method="post">
+                        <input type="hidden" name="id" th:value="${meeting.id}"/>
+                        <button type="submit" class="btn btn-success"/>Delete</button>
+                    </form>
+                </span>
+
+            </div>
+
+
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <div id="footer">
+        Planner - your best site to plan your meetings. Create in 2020r. &copy; All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pl">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+    <title>Planner</title>
+    <meta name="description" content="Your site to plan your work"/>
+    <meta name="keywords" content="Planner, plan, schedule, date, time"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="container">
+    <div id="logout">
+    </div>
+
+    <div id="logo">
+        Planner
+    </div>
+
+    <div id="topbar">
+
+        <div id="topbarL">
+            <img height="140" width="140" th:src="@{images/meting.jpg}"
+                 src="..static/images/meting.jpg"/>
+        </div>
+
+
+        <div id="topbarR">
+            <span class="bigtitle">Description</span>
+            <div style="height: 15px;"></div>
+            Hello! If you want use this app, please sign in.<br/>
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div id="sidebar">
+
+    </div>
+
+    <div id="content">
+        <form th:action="@{/registration}" th:object="${user}" method="post">
+
+            <div style="text-align: left; padding-left: 200px; padding-bottom:25px; 200px; float:left;">
+                <label>Name</label>
+            </div>
+            <div style="padding-left: 35px; float:left;">
+                <input type="text" th:field="*{name}"/>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div style="text-align: left; padding-left: 200px; padding-bottom:25px; 200px; float:left;">
+                <label>Password</label>
+            </div>
+            <div style="padding-left: 14px; float:left;">
+                <input type="password" th:field="*{password}"/>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div style="text-align: left; padding-left: 200px; padding-bottom:15px; 200px; float:left;">
+                <label>Email</label>
+            </div>
+            <div style="padding-left: 38px; float:left;">
+                <input type="text" th:field="*{email}"/>
+            </div>
+            <div style="clear: both;"></div>
+
+            <button type="submit">Create account</button>
+
+            <div class="status">
+                <td th:text="${status}"></td>
+
+                <div class="error" th:each="exception, iterstat: ${exceptions}">
+
+                    <td th:text="${exception}" th:id="|td${iterstat.index}|"></td>
+                    </br>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="footer">
+
+        Planner - your best site to plan your meetings. Create in 2020r. &copy; All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>

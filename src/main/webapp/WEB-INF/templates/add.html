@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="pl">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+    <title>Planner</title>
+    <meta name="description" content="Your site to plan your work"/>
+    <meta name="keywords" content="Planner, plan, schedule, date, time"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="container">
+
+    <div id="logout">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Log Out"/>
+        </form>
+    </div>
+
+    <div id="logo">
+        Planner
+    </div>
+
+    <div id="topbar">
+
+        <div id="topbarL">
+            <img height="140" width="140" th:src="@{images/meting.jpg}"
+                 src="..static/images/meting.jpg"/>
+        </div>
+
+
+        <div id="topbarR">
+            <span class="bigtitle">Description</span>
+            <div style="height: 15px;"></div>
+            Planner is application which should help you planning your own meetings.<br/>
+            Possible actions are show on left sidebar. Enjoy :)
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div id="sidebar">
+        <a href="/add" class="tilelink">
+            <div class="optionL">Add meeting</div>
+        </a>
+        <a href="/meetingsAtDay" class="tilelink">
+            <div class="optionL">Schedule</div>
+        </a>
+        <a href="/aboutApi" class="tilelink">
+            <div class="optionL">About API</div>
+        </a>
+
+    </div>
+
+    <div id="content">
+        <form action="#" th:action="@{/meeting-add}" th:object="${addMeetingDTO}" method="post">
+            <div class="add">
+                <label class="control-label">Title</label>
+                <br/>
+                <input title="Give name to your meeting" type="text" id="title" name="title"
+                       th:field="*{title}"/></input>
+            </div>
+            <br/>
+            <div class="add">
+                <label class="control-label">Start date</label>
+                <br/>
+                <input title="Establish begin date" type="datetime-local" id="meetingStartDate" name="meetingStartDate"
+                       th:field="*{meetingStartDate}"/></input>
+            </div>
+            <br/>
+            <div class="add">
+                <label class="control-label">End date</label>
+                <br/>
+                <input title="Establish end date" type="datetime-local" id="meetingEndDate" name="meetingEndDate"
+                       th:field="*{meetingEndDate}"/></input>
+            </div>
+            <br/>
+            <div class="add">
+                <label class="control-label">Room number</label>
+                <br/>
+                <input title="Choose number of meeting room - 1 to 5" type="text" id="room" name="room"
+                       th:field="*{room}"/></input>
+            </div>
+            <br/>
+
+            <button type="submit" class="btn btn-success"/>
+            Insert</button>
+            <br/>
+            <div class="error" th:each="exception, iterstat: ${exceptions}">
+
+                <td th:text="${exception}" th:id="|td${iterstat.index}|"></td>
+                </br>
+            </div>
+            <div class="status">
+                <td th:text="${status}"></td>
+            </div>
+            <div style="font-size: 18px;" class="conflict">
+                <td th:text="${conflict}"></td>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div id="footer">
+
+        Planner - your best site to plan your meetings. Create in 2020r. &copy; All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>

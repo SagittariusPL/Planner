@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pl">
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8"/>
+    <title>Planner</title>
+    <meta name="description" content="Your site to plan your work"/>
+    <meta name="keywords" content="Planner, plan, schedule, date, time"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" th:href="@{/css/style.css}"/>
+<!--    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" type="text/css"/>-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<!--    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>-->
+<!--    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
+</head>
+<body>
+
+<div id="container">
+
+    <div id="logout">
+    </div>
+
+    <div id="logo">
+        Planner
+    </div>
+
+    <div id="topbar">
+
+        <div id="topbarL">
+            <img height="140" width="140" th:src="@{images/meting.jpg}"
+                 src="..static/images/meting.jpg"/>
+        </div>
+
+
+        <div id="topbarR">
+            <span class="bigtitle">Description</span>
+            <div style="height: 15px;"></div>
+            Hello! If you want use this app, please sign in.<br/>
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div id="sidebar">
+
+    </div>
+
+    <div id="content">
+        <div>
+            <p th:if="${loginError}" class="error">Wrong user or password</p>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div><label> User Name : <input type="text" name="username"/> </label></div>
+            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <div><input type="submit" value="Sign In"/></div>
+            <br/>
+        </form>
+
+
+        <div>If you don't have an account, please create it</div>
+        <form th:action="@{/registration}" method="get">
+
+            <input type="submit" value="Registration"/>
+        </form>
+
+        <br/>
+        <br/>
+
+        <div class="container unauthenticated">
+            With Facebook: <a href="/oauth2">click here</a>
+        </div>
+        <div class="container authenticated" style="display:none">
+            Logged in as: <span id="user"></span>
+        </div>
+
+        <script type="text/javascript">
+            $.get("/user", function(data) {
+            $("#user").html(data.userAuthentication.details.name);
+            $(".unauthenticated").hide()
+            $(".authenticated").show()
+            });
+
+        </script>
+    </div>
+
+    <div id="footer">
+
+        Planner - your best site to plan your meetings. Create in 2020r. &copy; All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>

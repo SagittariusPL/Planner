@@ -1,0 +1,213 @@
+body
+{
+	background-color: #404040;
+	font-family: 'Oswald', sans-serif;
+}
+
+#container
+{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#logo
+{
+	color: white;
+	margin-top: 20px;
+	font-size: 60px;
+	letter-spacing: 4px;
+	text-align: center;
+}
+
+#topbar
+{
+	background-color: #128870;
+	color: white;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 25px;
+	height: 180px;
+}
+
+#topbarL
+{
+	float:left;
+	padding: 20px;
+	width: 188px;
+	text-align:center;
+	border-right: 2px dotted #cccccc;
+}
+
+#topbarR
+{
+	float:left;
+	padding: 20px;
+	width: 710px;
+	font-size: 20px;
+	text-align:justify;
+	
+}
+
+#sidebar
+{
+	float:left;
+	width: 200px;
+	min-height: 620px;
+	padding: 20px;
+	background-color: lightgrey;
+	text-align: center;
+	font-size: 18px;
+	border-right: 2px dotted #666666;
+
+}
+
+#content
+{
+	float:left;
+	padding:20px;
+	width: 718px;
+	background-color: #dedede;
+	min-height: 620px;
+	text-align: justify;
+	text-align: center;
+
+}
+
+#footer
+{
+	clear:both;
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	padding: 10px;
+	
+}
+
+.option
+{
+		float: left;
+		min-width: 50px;
+		height: 25px;
+		font-size: 18px;
+		padding: 10px;
+		border-right: 2px dotted #ffffff;
+		opacity: 0.8;
+}
+
+.option:hover
+{
+	background-color: #000000;
+	cursor: pointer;
+
+}
+	
+.optionL
+{
+	font-size: 18px;
+	height: 25px;
+	padding: 10px;
+	border-bottom: 2px dotted #444444;
+
+}
+
+.optionL:hover
+{
+	background-color: #f36742;
+	color: white;
+	cursor: pointer;
+
+}
+
+
+.bigtitle
+{
+	font-size:30px;
+	letter-spacing: 1px;
+}
+
+.dottedline
+{
+	height: 5px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	border-bottom: 2px dotted #444444;
+}
+
+.getMeeting
+{
+    color: black;
+
+}
+
+.tilelink
+{
+    text-decoration: none;
+    color: black;
+}
+
+.add
+{
+    font-size: 16px;
+    text-align:justify;
+    text-align:center;
+    padding: 5px;
+
+}
+.status
+{
+    font-size: 20px;
+    text-align: justify;
+    text-align: center;
+    padding: 15px;
+}
+
+.center-bar
+{
+    background-color: #128870;
+    width: 718px;-
+    height: 80px;
+    text-align: center;
+
+}
+.header
+{
+    float: left;
+   	color: white;
+   	padding: 10px;
+   	font-size: 20px;
+}
+
+.meeting
+{
+
+    width: 718px;-
+    height: 80px;
+    text-align: center;
+
+}
+
+.meeting-data
+{
+    float: left;
+    padding: 10px;
+    font-size: 20px;
+
+}
+
+.error
+{
+    font-size: 20px;
+    text-align: justify;
+    text-align: center;
+    padding: 15px;
+}
+
+#logout
+{
+    text-align:right;
+    height: 30px;
+}
+
+
+
