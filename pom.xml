@@ -5,10 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>planner-app2</artifactId>
+    <artifactId>planner-app3</artifactId>
     <version>v1.0</version>
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <appName>planner-app3</appName>
+                    <processTypes>
+                        <web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
