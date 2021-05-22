@@ -52,6 +52,7 @@ public class AddMeetingDTO {
         if (validationErrors.size() == 0) {
             return true;
         }
+        //add something
         throw new IncorrectDataException(validationErrors.stream()
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.toList())
